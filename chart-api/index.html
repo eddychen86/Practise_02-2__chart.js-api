@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar</title>
+</head>
+
+<body>
+    <canvas id="myChart" width="800" height="400"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      let originData = [
+        {
+          "Date": "~03/03",
+          "Time": "13"
+        },
+        {
+          "Date": "~03/05",
+          "Time": "20"
+        },
+        {
+          "Date": "~03/06",
+          "Time": "5"
+        },
+        {
+          "Date": "~03/07",
+          "Time": "33"
+        },
+        {
+          "Date": "~03/08",
+          "Time": "22"
+        },
+        {
+          "Date": "~03/09",
+          "Time": "23"
+        },
+        {
+          "Date": "~03/10",
+          "Time": "16"
+        },
+        {
+          "Date": "~03/11",
+          "Time": "10"
+        },
+        {
+          "Date": "!03/12",
+          "Time": "19"
+        },
+        {
+          "Date": "~03/13",
+          "Time": "30"
+        },
+        {
+          "Date": "~03/14",
+          "Time": "25"
+        },
+        {
+          "Date": "~03/15",
+          "Time": "20"
+        }
+      ];
+
+        let dataContent=originData.map(function(item){
+            let newItem={
+                x: item.Date,
+                y: item["Time"]
+            }
+
+            return newItem;
+        });
+
+        console.log(dataContent)
+
+        var ctx = document.getElementById('myChart');
+
+        const data = {
+            datasets: [{
+                label: 'Time',
+                data: dataContent,
+                backgroundColor:
+                    [
+                        'rgba(255, 99, 132, 0.2)'
+
+                    ],
+                borderColor:
+                    [
+                        'rgb(255, 99, 132)'
+                    ],
+                borderWidth: 1
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {
+                // maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        };
+
+        const myChart = new Chart(ctx, config)
+    </script>
+</body>
+
+</html>
